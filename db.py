@@ -30,8 +30,8 @@ def find_by_match(coll_name, query):
     return coll.find_one(query)
     
 
-def update_document(coll_name, document):
+def update_document(coll_name, query, document):
     coll = get_collection(coll_name)
-    coll.update(document)
+    coll.update(query, document)
 
 
