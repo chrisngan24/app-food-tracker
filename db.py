@@ -37,5 +37,3 @@ def find_by_query(coll_name, query):
 def update_document(coll_name, query, document):
     coll = get_collection(coll_name)
     coll.update(query, document)
-
-
