@@ -28,6 +28,10 @@ def insert_document(coll_name, document):
 def find_by_match(coll_name, query):
     coll = get_collection(coll_name) 
     return coll.find_one(query)
+
+def find_by_query(coll_name, query):
+    coll = get_collection(coll_name) 
+    return coll.find(query)
     
 
 def update_document(coll_name, query, document):

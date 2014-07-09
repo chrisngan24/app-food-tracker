@@ -1,7 +1,6 @@
 import datetime
 import time
-import sys
-import  entriesdb
+import entriesdb
 
 class Entries:
     def add_entry(self, data_entry): 
@@ -9,7 +8,7 @@ class Entries:
         query = {'camera_id' : data_entry['camera_id'],
                  'date_in'   : str(date),
                  'item_name' : data_entry['item_name']}
-        same_entry = entriesdb.find_same_entry(query)
+        same_entry = entriesdb.find_entry(query)
 
         document = query
 
@@ -20,6 +19,12 @@ class Entries:
             
         else:
             same_entry['count'] += 1  
-            entriesdb.update_entry({'_id' : same_entry['_id']},
-                                     same_entry)
+            entriesdb.update_entry({'_id' : same_entry['_id']}, same_entry)
+
+    def get_entries(self, camera_id):
+        query = {
+            'camera_id': camera_id,
+            'count'    : { '$gt' : 0 }}        
+        return entriesdb.find_entries(query)
+
 

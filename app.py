@@ -18,12 +18,16 @@ def add_food_entry():
     entries.add_entry(data_entry) 
     return 'success'
 
+    
 
-"""
 @app.route('/api/v1/get_inventory', methods=['GET'])
 def get_inventory():
-      
-"""
+    user_id = request.args.get('user_id') 
+
+    entries = Entries()
+    inventory = entries.get_entries(user_id)
+
+    return json.dumps(str(inventory))
 
 if __name__ == '__main__':
     app.run(debug=True)
