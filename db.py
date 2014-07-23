@@ -29,9 +29,9 @@ def find_by_match(coll_name, query):
     coll = get_collection(coll_name) 
     return coll.find_one(query)
 
-def find_by_query(coll_name, query):
+def find_by_query(coll_name, query, projection={}):
     coll = get_collection(coll_name) 
-    return coll.find(query)
+    return coll.find(query, projection)
     
 
 def update_document(coll_name, query, document):

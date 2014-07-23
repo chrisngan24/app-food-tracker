@@ -7,7 +7,7 @@ def find_entry(query):
     return entry 
 
 def find_entries(query):
-    entries = db.find_by_query(COLL_NAME, query)
+    entries = db.find_by_query(COLL_NAME, query, projection={'_id' : 0})
     result = []
     for entry in entries:
         result.append(entry)

@@ -1,5 +1,6 @@
 import os
-from flask import Flask, request
+import flask
+from flask import Flask, request, Response
 import db
 from entries import Entries
 import json 
@@ -27,8 +28,9 @@ def get_inventory():
     entries = Entries()
     inventory = entries.get_entries(user_id)
 
-    return json.dumps(str(inventory))
+    return Response(json.dumps(inventory), mimetype='application/json')
+    #return flask.jsonify(inventory)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=8000, debug=True)
    

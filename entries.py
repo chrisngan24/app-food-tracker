@@ -1,6 +1,7 @@
 import datetime
 import time
 import entriesdb
+import util
 
 class Entries:
     def add_entry(self, data_entry): 
@@ -15,11 +16,12 @@ class Entries:
         if same_entry == None:
             print document
             document['count'] = 1
+            document['id'] = util.generate_uuid()
             entriesdb.insert_entry(document)
             
         else:
             same_entry['count'] += 1  
-            entriesdb.update_entry({'_id' : same_entry['_id']}, same_entry)
+            entriesdb.update_entry({'id' : same_entry['id']}, same_entry)
 
     def get_entries(self, camera_id):
         query = {
