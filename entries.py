@@ -8,7 +8,6 @@ class Entries:
         date = datetime.date.fromtimestamp(eval(data_entry['time_in']))
         query = {'camera_id' : data_entry['camera_id'],
                  'date_in'   : str(date),
-                 'time_in'   : data_entry['time_in'],
                  'item_name' : data_entry['item_name']}
         same_entry = entriesdb.find_entry(query)
 
@@ -18,6 +17,7 @@ class Entries:
             print document
             document['count'] = 1
             document['id'] = util.generate_uuid()
+            document['time_in'] = data_entry['time_in']
             entriesdb.insert_entry(document)
             
         else:
