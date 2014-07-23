@@ -13,4 +13,4 @@ def test_add_entry(test_url):
 
     print r
     
-test_add_entry('http://localhost:5000')
+test_add_entry('http://localhost:8000')
