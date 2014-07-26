@@ -15,13 +15,12 @@ class Entries:
 
         if same_entry == None:
             print document
-            document['count'] = 1
+            document['count'] = data_entry['count'] if data_entry.has_key('count')  else 1
             document['id'] = util.generate_uuid()
             document['time_in'] = data_entry['time_in']
             entriesdb.insert_entry(document)
-            
         else:
-            same_entry['count'] += 1  
+            same_entry['count'] += data_entry['count'] if data_entry.has_key('count') else 1
             entriesdb.update_entry({'id' : same_entry['id']}, same_entry)
 
     def get_entries(self, camera_id):

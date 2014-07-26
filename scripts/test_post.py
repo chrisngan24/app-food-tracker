@@ -5,9 +5,10 @@ import json
 
 def test_add_entry(test_url):
     payload = {
-            'item_name' : 'bread',
+            'item_name' : 'PEAR',
             'time_in'   : str(time.time()),
-            'camera_id' : '12345'
+            'camera_id' : '012',
+            'count'     : 23
             }
     r = requests.post(test_url + '/api/v1/add_entry', data=json.dumps(payload)) 
 

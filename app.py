@@ -30,7 +30,7 @@ def get_inventory():
     inventory = entries.get_entries(user_id)
 
     return Response(json.dumps(inventory), mimetype='application/json')
-    #return flask.jsonify(inventory)
+
 
 @app.route('/api/v1/user', methods=['GET'])
 def get_user():
