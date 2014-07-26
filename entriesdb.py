@@ -7,7 +7,7 @@ def find_entry(query):
     return entry 
 
 def find_entries(query):
-    entries = db.find_by_query(COLL_NAME, query, projection={'_id' : 0})
+    entries = db.find_by_query(COLL_NAME, query)
     result = []
     for entry in entries:
         result.append(entry)
@@ -19,6 +19,3 @@ def insert_entry(document):
 
 def update_entry(query, document):
     db.update_document(COLL_NAME, query, document)
-
-
-

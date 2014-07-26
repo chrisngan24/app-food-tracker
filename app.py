@@ -3,6 +3,7 @@ import flask
 from flask import Flask, request, Response
 import db
 from entries import Entries
+from user import User
 import json 
 
 app = Flask(__name__)
@@ -21,7 +22,7 @@ def add_food_entry():
 
     
 
-@app.route('/api/v1/get_inventory', methods=['GET'])
+@app.route('/api/v1/inventory', methods=['GET'])
 def get_inventory():
     user_id = request.args.get('user_id') 
 
@@ -30,6 +31,16 @@ def get_inventory():
 
     return Response(json.dumps(inventory), mimetype='application/json')
     #return flask.jsonify(inventory)
+
+@app.route('/api/v1/user', methods=['GET'])
+def get_user():
+    user_id = request.args.get('user_id')
+    
+    user = User().get_user_by_id(user_id)
+
+    return Response(json.dumps(user), mimetype='application/json') 
+
+
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)

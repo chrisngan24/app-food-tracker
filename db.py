@@ -25,11 +25,11 @@ def insert_document(coll_name, document):
     coll = get_collection(coll_name)
     coll.insert(document)
 
-def find_by_match(coll_name, query):
+def find_by_match(coll_name, query, projection={'_id':0}):
     coll = get_collection(coll_name) 
-    return coll.find_one(query)
+    return coll.find_one(query, projection)
 
-def find_by_query(coll_name, query, projection={}):
+def find_by_query(coll_name, query, projection={'_id':0}):
     coll = get_collection(coll_name) 
     return coll.find(query, projection)
     
