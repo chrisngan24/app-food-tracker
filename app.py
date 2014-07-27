@@ -22,7 +22,7 @@ def add_food_entry():
 @app.route('/api/v1/update_entry', methods=['POST', 'PUT'])
 def update_food_entry():
     data_entry = json.loads(request.get_data())
-    data_id = request.args.get('id')
+    data_id = data_entry['id']
 
     Entries().update_entry(data_id, data_entry)
     return 'success'

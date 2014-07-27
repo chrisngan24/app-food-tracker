@@ -9,7 +9,7 @@ def test_add_entry(test_url):
             'id'  : item_id, 
             'count'     : 1
             }
-    r = requests.post(test_url + '/api/v1/update_entry', params={'entry_id': item_id},data=json.dumps(payload)) 
+    r = requests.post(test_url + '/api/v1/update_entry', params={'id': item_id},data=json.dumps(payload)) 
 
     print r
     
