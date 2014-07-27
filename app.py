@@ -15,7 +15,6 @@ def hello():
 @app.route('/api/v1/add_entry', methods=['POST'])
 def add_food_entry():
     data_entry = json.loads(request.get_data())
-    
     entries = Entries()
     entries.add_entry(data_entry) 
     return 'success'
@@ -40,6 +39,16 @@ def get_user():
 
     return Response(json.dumps(user), mimetype='application/json') 
 
+
+@app.route('/api/v1/update_user', methods=['POST', 'PUT'])
+def update_user():
+
+    user_id = request.args.get('user_id')
+
+    user_data = json.loads(request.get_data())
+
+    User().update_user(user_id, user_data)
+    return 'success'
 
 
 if __name__ == '__main__':

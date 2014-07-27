@@ -7,6 +7,9 @@ class User:
     def get_user_by_id(self, user_id):
         query = {'user_id' : user_id}
         return userdb.find_user(query)
+    
+    def update_user(self, user_id, user_data):
+        userdb.update_user(user_id, user_data)
 
     def create_user(self, user_id, grocery_list):
         user = {'user_id': user_id,

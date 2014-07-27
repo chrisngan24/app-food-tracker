@@ -5,6 +5,7 @@ import util
 
 class Entries:
     def add_entry(self, data_entry): 
+        #import pdb; pdb.set_trace()
         date = datetime.date.fromtimestamp(eval(data_entry['time_in']))
         query = {'camera_id' : data_entry['camera_id'],
                  'date_in'   : str(date),
