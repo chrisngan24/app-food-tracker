@@ -30,4 +30,9 @@ class Entries:
             'count'    : { '$gt' : 0 }}        
         return entriesdb.find_entries(query)
 
+    def update_entry(self, entry_id, entry):
+        query = {'id': entry_id}
+        data = { '$set': entry}
+        entriesdb.update_entry(query, data)
+
 

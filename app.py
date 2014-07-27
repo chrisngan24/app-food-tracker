@@ -19,6 +19,16 @@ def add_food_entry():
     entries.add_entry(data_entry) 
     return 'success'
 
+@app.route('/api/v1/update_entry', methods=['POST', 'PUT'])
+def update_food_entry():
+    data_entry = json.loads(request.get_data())
+    data_id = request.args.get('id')
+
+    Entries().update_entry(data_id, data_entry)
+    return 'success'
+    
+
+
     
 
 @app.route('/api/v1/inventory', methods=['GET'])
@@ -42,11 +52,8 @@ def get_user():
 
 @app.route('/api/v1/update_user', methods=['POST', 'PUT'])
 def update_user():
-
     user_id = request.args.get('user_id')
-
     user_data = json.loads(request.get_data())
-
     User().update_user(user_id, user_data)
     return 'success'
 
